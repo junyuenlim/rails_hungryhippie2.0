@@ -21,19 +21,6 @@ body {
   color: #ff4c0e;
 }
 
-.btn {
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 600;
-}
-
-.btn-large {
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 600;
-  font-size: 1.3em;
-  line-height: 1.2em;
-  color: #ffffff;
-}
-
 .thumbnail {
   background-color: #ffffff;
   padding: 10px;
@@ -55,7 +42,7 @@ body {
 
 h1 {
   font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   color: #013946;
   font-size: 1.3em;
   line-height: 1.2em;
@@ -64,7 +51,7 @@ h1 {
 h2 {
   /*-host name-*/
   font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   color: #013946;
   font-size: 1.1em;
   line-height: 1.2em;
@@ -73,14 +60,13 @@ h2 {
 h3 {
   /*-food name-*/
   font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 800;
+  font-weight: 600;
   color: #ff4c0f;
   font-size: 1em;
   line-height: 1em;
 }
 
 h4 {
-  /*-food name-*/
   font-family: 'Open Sans', Arial, sans-serif;
   font-weight: 600;
   color: #ffffff;
@@ -98,5 +84,16 @@ p {
 
 .label {
   font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.btn {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 500;
+}
+
+.btn-large {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 500;
+  color: #ffffff;
 }
