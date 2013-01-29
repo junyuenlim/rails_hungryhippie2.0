@@ -16,4 +16,7 @@ class StaticPagesController < ApplicationController
 
   def thank_you
   end
+  
+  def kuala_lumpur
+  end
 end

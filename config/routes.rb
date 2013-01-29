@@ -9,6 +9,8 @@ Hungryhippie::Application.routes.draw do
   get "host" => "static_pages#host"
 
   get "find-local" => "static_pages#find_local"
+  
+  get "kuala-lumpur" => "static_pages#kuala_lumpur"
 
   get "static_pages/locals"
 
