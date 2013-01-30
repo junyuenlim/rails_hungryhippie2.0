@@ -6,9 +6,46 @@ body {
   background-color: #fff5e6;
 }
 
+.hh-navbar {
+	width: 980px;
+	height: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFFFFF;
+}
+
+.hh-nav {
+	height: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	list-style: none;
+}
+	
+.nav > li {
+	float: left;
+	width: 80px;
+	line-height: 70px;
+	border: solid #fff5e6;
+	border-width: 0px 8px 0px;
+}
+
+.nav > li > a {
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: 600;
+	font-size: 1em;
+	color: #4c4c4c;
+}
+
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: #fff5e6;
+}
+
 .container {
   background-color: #ffffff;
   padding-top: 30px;
+  padding-bottom: 30px;
   padding-left: 20px;
   padding-right: 20px;
 }

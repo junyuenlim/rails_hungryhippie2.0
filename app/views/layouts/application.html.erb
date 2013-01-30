@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="keywords" content="Hungry Hippie, HungryHippie, Food, Local food, Food hosting, Local, Local people, Travel" />
-<meta name="description" content="HungryHippie is an online platform that aims to enhance travel experience by connecting travellers to local people, through dining local food." />
+<meta name="description" content="HungryHippie is a global marketplace to have local food with local people." />
 <!-- Facebook Open Graph -->
 	<meta property="og:title" content="HungryHippie" />
-	<meta property="og:description" content="Enhance your travel experience with HungryHippie, an online platform that connects travellers to local people through local food." />
+	<meta property="og:description" content="HungryHippie is a global marketplace to have local food with local people." />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="http://hungryhippie.org" />
 	<meta property="og:image" content="http://www.hungryhippie.org/assets/graphics/HungryHippie_FB-OG.png" />
 	<meta property="og:site_name" content="HungryHippie" />
 	<meta property="fb:admins" content="720874386" />
-<title>HungryHippie</title>
+<title>HungryHippie – <%= yield(:title) || "Meet Local People, Eat Local Food" %></title>
 <%= stylesheet_link_tag    "application", :media => "all" %>
 <%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
@@ -26,32 +26,59 @@ mixpanel.init("ed0120fa5b1addd8ca3c0a895b8333ca");</script>
 </head>
 <body>
 <!-- Navbar-->
-<div class="container" style="padding-top: 20px; padding-bottom: 20px; border-bottom: 8px solid #fff5e6; vertical-align: bottom;">
-<%= link_to image_tag("/assets/graphics/HungryHippie_Logo_v1.png", {:alt => 'Hungry Hippie'}), root_path %>
-	<div class="bottom pull-right" style="padding-top: 30px;">
-	<a href="./host.html" class="btn btn-primary"><i class="icon-map-marker icon-white"></i> Be a Host</a>
+<div style="background-color: #FFFFFF; width: 100%; height: 70px; border-bottom: 8px solid #fff5e6;">
+	<div class="hh-navbar">
+		<div class="row">
+			<div class="span5">
+				<%= link_to image_tag("/assets/graphics/HungryHippie_Logo_v2.png", {:alt => 'Hungry Hippie'}), root_path %>
+			</div>
+			<div class="span4 hh-nav">
+				<ul class="nav">
+					<li><a href="./find-local.html">Travel</a></li>
+					<li style="border-left: 0px;"><a href="./host.html">Host</a></li>
+				</ul>
+			</div>
+			<div class="hh-nav pull-right">
+				<ul class="nav">
+					<% if user_signed_in? %>
+						<p>Signed in as <%= current_user.email %>. Not you?</p>
+						<li style="border: 0px;"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete , style: "color: #ff6733;" %></li>
+					<% else %>	
+						<li style="border: 0px;"><%= link_to "Sign up!", new_user_registration_path , style: "color: #ff6733;" %></li>
+						<li style="border: 0px;"><%= link_to "Log In", new_user_session_path , style: "color: #ff6733;" %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
-
+<div class="container">
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+<% end %>
 <%= yield %>
+</div>
 
 <footer>
 	<div class="container" style="border-top: 8px solid #fff5e6;">
 		<div class="row">
-			<div class="span1">
-				<a href="http://www.facebook.com/hippieishungry" target="blank_">Facebook</a></br>
-				<a href="http://www.twitter.com/hippieishungry" target="blank_">Twitter</a>
-			</div>
-			<div class="span6">
-		<!-- HH Facebook Likes Start -->
+			<div class="span5 pull-right">
+			<!--Twitter button-->
+			<a href="https://twitter.com/hippieishungry" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @hippieishungry</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</br>
+			<!-- HH Facebook Likes Start -->
 			<iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/hippieishungry&send=false&layout=standard&width=250&show_faces=true&action=like&colorscheme=light&font&height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
+			<p><small>© HungryHippie 2013</small></p>
 			</div>
-			<p class="pull-right"><small>© HungryHippie 2013</small></p>
+			<div class="span4 offset1 pull-left">
+			<p style="line-height: 1.5em;">HungryHippie is a global marketplace to </br>have local food with local people.</p>
+			<a href="./about.html"><small>How It Works</small></a></br>
+			<a href="./about.html"><small>About Us</small></a></br>
+			<a href="./about.html"><small>Our Mission</small></a></br>
+			</div>
 		<div>
 	</div>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="/assets/bootstrap.js"></script>
 <!-- Google Analytics -->
 <script type="text/javascript">
   var _gaq = _gaq || [];

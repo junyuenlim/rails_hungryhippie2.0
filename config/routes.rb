@@ -1,5 +1,7 @@
 Hungryhippie::Application.routes.draw do
   
+  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
+
   root :to => 'static_pages#index'
   
   get "static_pages/index"
