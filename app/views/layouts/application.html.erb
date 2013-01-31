@@ -5,25 +5,30 @@
 <meta name="keywords" content="Hungry Hippie, HungryHippie, Food, Local food, Food hosting, Local, Local people, Travel" />
 <meta name="description" content="HungryHippie is a global marketplace to have local food with local people." />
 <!-- Facebook Open Graph -->
-	<meta property="og:title" content="HungryHippie" />
-	<meta property="og:description" content="HungryHippie is a global marketplace to have local food with local people." />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://hungryhippie.org" />
-	<meta property="og:image" content="http://www.hungryhippie.org/assets/graphics/HungryHippie_FB-OG.png" />
-	<meta property="og:site_name" content="HungryHippie" />
-	<meta property="fb:admins" content="720874386" />
+<meta property="og:title" content="HungryHippie" />
+<meta property="og:description" content="HungryHippie is a global marketplace to have local food with local people." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://hungryhippie.org" />
+<meta property="og:image" content="http://www.hungryhippie.org/assets/graphics/HungryHippie_FB-OG.png" />
+<meta property="og:site_name" content="HungryHippie" />
+<meta property="fb:admins" content="720874386" />
+
 <title>HungryHippie – <%= yield(:title) || "Meet Local People, Eat Local Food" %></title>
+
 <%= stylesheet_link_tag    "application", :media => "all" %>
 <%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
+
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <link rel="icon" type="image/png" href="img/graphics/HungryHippie_favicon.png" />
-<!-- start Mixpanel -->
+
+<!-- start Mixpanel 
 <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||
 []);
 mixpanel.init("ed0120fa5b1addd8ca3c0a895b8333ca");</script>
 <!-- end Mixpanel -->
 </head>
+
 <body>
 <!-- Navbar-->
 <div style="background-color: #FFFFFF; width: 100%; height: 70px; border-bottom: 8px solid #fff5e6;">
@@ -32,32 +37,34 @@ mixpanel.init("ed0120fa5b1addd8ca3c0a895b8333ca");</script>
 			<div class="span5">
 				<%= link_to image_tag("/assets/graphics/HungryHippie_Logo_v2.png", {:alt => 'Hungry Hippie'}), root_path %>
 			</div>
-			<div class="span4 hh-nav">
+			<div class="span3 hh-nav">
 				<ul class="nav">
-					<li><a href="./find-local.html">Travel</a></li>
-					<li style="border-left: 0px;"><a href="./host.html">Host</a></li>
+					<li><%= link_to "Travel", find_local_path %></li>
+					<li style="border-left: 0px;"><%= link_to "Host", host_path %></li>
 				</ul>
 			</div>
+
 			<div class="hh-nav pull-right">
-				<ul class="nav">
+					<!--<%= link_to 'Login with Facebook', '/auth/facebook/' %>-->
 					<% if user_signed_in? %>
-						<p>Signed in as <%= current_user.email %>. Not you?</p>
-						<li style="border: 0px;"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete , style: "color: #ff6733;" %></li>
-					<% else %>	
-						<li style="border: 0px;"><%= link_to "Sign up!", new_user_registration_path , style: "color: #ff6733;" %></li>
-						<li style="border: 0px;"><%= link_to "Log In", new_user_session_path , style: "color: #ff6733;" %></li>
+						<div style="text-align:left; padding-top: 12px;">
+							<small>Signed in as</small><br><%= link_to current_user.email, edit_user_registration_path %>
+							<%= link_to "Log Out", destroy_user_session_path, :method => :delete , class:"btn btn-mini" %>
+						</div>
+					<% else %>
+						<ul class="nav">
+							<li style="border: 0px;"><%= link_to "Sign up!", new_user_registration_path , style: "color: #ff6733;" %></li>
+							<li style="border: 0px;"><%= link_to "Log In", new_user_session_path , style: "color: #ff6733;" %></li>
+						</ul>
 					<% end %>
-				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="container">
 <% flash.each do |key, value| %>
-<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+<%= content_tag(:div, value, class: "alert alert-#{key} container" , style:"text-align: center; margin-bottom: 8px; border: 0px;") %>
 <% end %>
 <%= yield %>
-</div>
 
 <footer>
 	<div class="container" style="border-top: 8px solid #fff5e6;">
@@ -67,14 +74,14 @@ mixpanel.init("ed0120fa5b1addd8ca3c0a895b8333ca");</script>
 			<a href="https://twitter.com/hippieishungry" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @hippieishungry</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</br>
 			<!-- HH Facebook Likes Start -->
-			<iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/hippieishungry&send=false&layout=standard&width=250&show_faces=true&action=like&colorscheme=light&font&height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
+			<iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/hippieishungry&send=false&layout=standard&width=250&show_faces=true&action=like&colorscheme=light&font&height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:80px;" allowTransparency="true"></iframe>
 			<p><small>© HungryHippie 2013</small></p>
 			</div>
 			<div class="span4 offset1 pull-left">
 			<p style="line-height: 1.5em;">HungryHippie is a global marketplace to </br>have local food with local people.</p>
-			<a href="./about.html"><small>How It Works</small></a></br>
-			<a href="./about.html"><small>About Us</small></a></br>
-			<a href="./about.html"><small>Our Mission</small></a></br>
+			<%= link_to "How It Works", root_path %></br>
+			<%= link_to "About Us", about_path %></br>
+			<%= link_to "Our Mission", about_path %>
 			</div>
 		<div>
 	</div>

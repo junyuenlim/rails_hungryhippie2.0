@@ -1,5 +1,7 @@
 Hungryhippie::Application.routes.draw do
   
+  match '/auth/:provider/callback' => 'authentications#create'
+  
   devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 
   root :to => 'static_pages#index'
@@ -10,9 +12,9 @@ Hungryhippie::Application.routes.draw do
 
   get "host" => "static_pages#host"
 
-  get "find-local" => "static_pages#find_local"
+  get "find_local" => "static_pages#find_local"
   
-  get "kuala-lumpur" => "static_pages#kuala_lumpur"
+  get "kuala_lumpur" => "static_pages#kuala_lumpur"
 
   get "static_pages/locals"
 
