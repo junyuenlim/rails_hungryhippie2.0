@@ -1,11 +1,14 @@
 Hungryhippie::Application.routes.draw do
   
+  root :to => 'static_pages#index'
+  
+  ActiveAdmin.routes(self)
+  #devise_for :admin_users, ActiveAdmin::Devise.config
+    
   match '/auth/:provider/callback' => 'authentications#create'
   
   devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
-
-  root :to => 'static_pages#index'
-  
+    
   get "static_pages/index"
 
   get "about" => "static_pages#about"
