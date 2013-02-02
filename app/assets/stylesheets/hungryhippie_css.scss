@@ -42,6 +42,10 @@ body {
   background-color: #fff5e6;
 }
 
+.active {
+  background-color: #fff5e6;
+}
+
 .container {
   background-color: #ffffff;
   padding-top: 30px;
@@ -52,6 +56,12 @@ body {
 
 .center {
   text-align: center;
+}
+
+.scrollspy-example {
+height: 200px;
+overflow: auto;
+position: relative;
 }
 
 .ss-required-asterisk {
@@ -66,7 +76,7 @@ body {
 }
 
 .host-pic {
-  width: 150px;
+  width: 125px;
 }
 
 .label-info {

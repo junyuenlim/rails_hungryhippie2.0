@@ -39,8 +39,10 @@ mixpanel.init("ed0120fa5b1addd8ca3c0a895b8333ca");</script>
 			</div>
 			<div class="span3 hh-nav">
 				<ul class="nav">
-					<li><%= link_to "Travel", find_local_path %></li>
-					<li style="border-left: 0px;"><%= link_to "Host", host_path %></li>
+					<li class="<%= 'active' if current_page?(find_local_path) %>">
+					<%= link_to "Travel", find_local_path %></li>
+					<li class="<%= 'active' if current_page?(host_path) %>"
+						style="border-left: 0px;"><%= link_to "Host", host_path %></li>
 				</ul>
 			</div>
 
