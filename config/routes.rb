@@ -1,6 +1,6 @@
 Hungryhippie::Application.routes.draw do
   
-  break if ARGV.join.include? 'assets:precompile'
+  #break if ARGV.join.include? 'assets:precompile'
   
   root :to => 'static_pages#index'
   
